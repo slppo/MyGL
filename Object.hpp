@@ -21,6 +21,9 @@ namespace MyGL
     template <typename PtrDestroyerFn>
     void Destroy(PtrDestroyerFn destroyer) { destroyer(1, &_id); }
   private:
+    Object(const Object &);
+    Object &operator=(const Object &);
+
     GLuint _id;
   };
 }
