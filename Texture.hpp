@@ -7,6 +7,8 @@
 #include <GL/glew.h>
 #include <type_traits>
 
+// TODO: add 1D and 3D textures
+
 namespace MyGL
 {
   enum class TextureTarget { Tex2D = GL_TEXTURE_2D };

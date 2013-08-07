@@ -6,6 +6,7 @@
 
 namespace MyGL
 {
+  // TODO: add all the types
   enum class Type { Invalid, Float = GL_FLOAT, Byte = GL_UNSIGNED_BYTE };
   
   template <typename T>

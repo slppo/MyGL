@@ -7,7 +7,7 @@
 
 namespace MyGL
 {
-  // TODO: complete this...
+  // TODO: add all the keys
   enum class Key { 
     Escape = GLFW_KEY_ESCAPE,
     W = 'W', A = 'A', S = 'S', D = 'D',

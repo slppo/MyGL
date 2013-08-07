@@ -7,6 +7,7 @@ namespace MyGL
 {
   class Program;
 
+  // TODO add all the glUniform* functions
   class Uniform
   {
     friend class Program;

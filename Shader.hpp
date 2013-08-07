@@ -9,7 +9,7 @@
 namespace MyGL
 {
   enum class ShaderType { Vertex = GL_VERTEX_SHADER, 
-    Fragment = GL_FRAGMENT_SHADER };
+    Fragment = GL_FRAGMENT_SHADER, Geometry = GL_GEOMETRY_SHADER };
 
   template <ShaderType Type>
   class Shader : public Object
@@ -39,6 +39,7 @@ namespace MyGL
 
   typedef Shader<ShaderType::Vertex> VertexShader;
   typedef Shader<ShaderType::Fragment> FragmentShader;
+  typedef Shader<ShaderType::Geometry> GeometryShader;
 }
 
 #endif
