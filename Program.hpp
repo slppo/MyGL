@@ -14,10 +14,12 @@ namespace MyGL
   {
   public:
     Program() : Object(glCreateProgram()) { }
+    Program(Program &&rhs) : Object(std::move(static_cast<Object&&>(rhs))) { }
     ~Program() { glDeleteProgram(Id()); }
     template <typename ShaderT>
     friend Program &operator<<(Program &program, 
       const ShaderT &shader);
+    Program &operator=(Program &&rhs);
     void BindOutput(const GLchar *name, GLuint idx);
     void Link();
     Attribute Attribute(const GLchar *name);

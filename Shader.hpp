@@ -14,10 +14,20 @@ namespace MyGL
   template <ShaderType Type>
   class Shader : public Object
   {
+    typedef Shader<Type> this_t;
   public:
-    Shader() : Object(glCreateShader(static_cast<GLenum>(Type)))
-    { }
+    Shader() : Object(glCreateShader(static_cast<GLenum>(Type))) { }
+    Shader(this_t &&rhs) : Object(std::move(static_cast<Object&&>(rhs))) { }
     ~Shader() { glDeleteShader(Id()); }
+    Shader &operator=(this_t &rhs)
+    {
+      if(this != &rhs)
+      {
+        glDeleteShader(Id());
+        static_cast<Object&>(*this) = std::move(static_cast<Object&&>(rhs));
+      }
+      return *this;
+    }
     void Compile(const GLchar *src)
     {
       glShaderSource(Id(), 1, &src, 0);

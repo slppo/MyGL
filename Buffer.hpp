@@ -22,8 +22,7 @@ namespace MyGL
       if(this != &rhs)
       {
         Destroy(glDeleteBuffers);
-        _id = rhs._id;
-        rhs._id = 0;
+        static_cast<Object&>(*this) = std::move(static_cast<Object&&>(rhs));
       }
       return *this;
     }

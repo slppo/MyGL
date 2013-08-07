@@ -20,6 +20,8 @@ namespace MyGL
     void Enable();
   private:
     explicit Attribute(GLint idx);
+    Attribute(const Attribute &);
+    Attribute &operator=(const Attribute &);
   
     GLint _idx;
     GLint _size;

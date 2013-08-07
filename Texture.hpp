@@ -33,9 +33,21 @@ namespace MyGL
   template <TextureTarget Target, class Traits = TextureTraits<Target>>
   class Texture : public Object
   {
+    typedef Texture<Target, Traits> this_t;
     const static GLenum GlTarget = static_cast<GLenum>(Target);
   public:
     Texture() : Object(glGenTextures) { }
+    Texture(this_t &&rhs) : Object(std::move(static_cast<Object&&>(rhs))) { }
+    ~Texture() { Destroy(glDeleteTextures); }
+    this_t &operator=(this_t &&rhs)
+    {
+      if(this != &rhs)
+      {
+        Destroy(glDeleteTextures);
+        static_cast<Object&>(*this) = std::move(static_cast<Object&&>(rhs));        
+      }
+      return *this;
+    }
     template <typename T>
     void SetBorderColor(const Color<T> &color)
     {

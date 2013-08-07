@@ -6,6 +6,16 @@
 
 namespace MyGL
 {
+  Program &Program::operator=(Program &&rhs)
+  {
+    if(this != &rhs)
+    {
+      glDeleteProgram(Id());
+      static_cast<Object&>(*this) = std::move(static_cast<Object&&>(rhs));
+    }
+    return *this;
+  }
+
   void Program::BindOutput(const GLchar *name, GLuint idx)
   {
     glBindFragDataLocation(Id(), idx, name); 

@@ -10,6 +10,15 @@ namespace MyGL
   public:
     operator const GLuint() const { return _id; }    
     const GLuint Id() const { return _id; }
+    Object &operator=(Object &&rhs)
+    {
+      if(this != &rhs)
+      {
+        _id = rhs._id;
+        rhs._id = 0;
+      }
+      return *this;
+    }
     operator GLuint() { return _id; }    
     GLuint Id() { return _id; }
   protected:

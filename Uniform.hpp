@@ -18,6 +18,8 @@ namespace MyGL
     void Set(GLuint value) { glUniform1ui(_idx, value); }
   private:
     explicit Uniform(GLint idx) : _idx(idx) { }
+    Uniform(const Uniform &);
+    Uniform &operator=(const Uniform &);
 
     GLint _idx;
   };
